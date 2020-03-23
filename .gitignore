@@ -1,2 +1,3 @@
-build/
-test/
+test/demo.out
+build/*.o
+build/libmvector.a
