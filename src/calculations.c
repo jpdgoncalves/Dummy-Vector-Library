@@ -53,3 +53,37 @@ Vector* v_normalize(Vector *v, double magnitude) {
 
     return normalized;
 }
+
+double v2d_angle(Vector *v)
+{
+    double angle;
+    double *coords;
+    
+    if(v->size != 2) {
+        return -361;
+    }
+
+    coords = v->coords;
+    angle = atan2(coords[0], coords[1]);
+
+    return angle;
+}
+
+double v2d_angle_between(Vector *v1, Vector *v2)
+{
+    double angle;
+    double mag1;
+    double mag2;
+    double dot_product;
+
+    if(v1->size != 2 || v2->size != 2) {
+        return -361;
+    }
+
+    dot_product = v_dot_product(v1, v2);
+    mag1 = v_magnitude(v1);
+    mag2 = v_magnitude(v2);
+    angle = acos(dot_product / (mag1 * mag2));
+
+    return angle;
+}
